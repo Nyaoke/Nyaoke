@@ -14,12 +14,11 @@ export function DiamondCard({ diamond }: DiamondCardProps) {
 
   return (
     <article className="relative border border-rc-border bg-white transition-colors duration-150 hover:border-neutral-300">
-      <div className="relative aspect-square border-b border-rc-border">
+      <div className="relative aspect-square border-b border-rc-border bg-neutral-100">
         <DiamondMedia
           imageUrl={imageUrl}
           shape={diamond.shape}
           alt={formatDiamondTitle(diamond)}
-          className="h-full w-full"
         />
         <CompareCheckbox diamondId={diamond.id} />
       </div>

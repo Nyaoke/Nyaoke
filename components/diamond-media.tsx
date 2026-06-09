@@ -14,6 +14,7 @@ type DiamondMediaProps = {
   imageClassName?: string;
   sizes?: string;
   priority?: boolean;
+  fillParent?: boolean;
 };
 
 export function DiamondMedia({
@@ -24,19 +25,20 @@ export function DiamondMedia({
   imageClassName,
   sizes = "(max-width: 768px) 50vw, 25vw",
   priority = false,
+  fillParent = true,
 }: DiamondMediaProps) {
   const [failed, setFailed] = useState(false);
 
   if (!imageUrl || failed) {
     return (
-      <div className={cn("flex items-center justify-center bg-neutral-100", className)}>
+      <div className={cn("flex items-center justify-center bg-neutral-100", fillParent && "absolute inset-0", className)}>
         <ShapeIllustration shape={shape} className="h-16 w-16 text-neutral-400" />
       </div>
     );
   }
 
   return (
-    <div className={cn("relative overflow-hidden bg-neutral-100", className)}>
+    <div className={cn("overflow-hidden bg-neutral-100", fillParent ? "absolute inset-0" : "relative h-full w-full", className)}>
       <Image
         src={imageUrl}
         alt={alt}

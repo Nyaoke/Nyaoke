@@ -83,8 +83,8 @@ function DockThumbnail({ diamondId, shape, onRemove }: DockThumbnailProps) {
         imageUrl={imageUrl}
         shape={shape}
         alt={diamond ? formatDiamondTitle(diamond) : "Diamond"}
-        className="h-full w-full"
         sizes="40px"
+        fillParent
       />
       <button
         type="button"

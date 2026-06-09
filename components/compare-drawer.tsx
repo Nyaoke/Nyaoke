@@ -164,8 +164,8 @@ function renderCell(
             imageUrl={getDiamondImageUrl(diamond)}
             shape={diamond.shape}
             alt={formatDiamondTitle(diamond)}
-            className="h-full w-full"
             sizes="256px"
+            fillParent
           />
           <button
             type="button"
