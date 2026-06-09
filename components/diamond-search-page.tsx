@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { applyFilters } from "@/lib/apply-filters";
 import { ActiveFilterChip } from "@/lib/filter-types";
+import { parseComparisonIds, setComparisonInParams } from "@/lib/comparison-url";
 import { getActiveFilterChips, serializeFilterState, useFilterState } from "@/lib/filter-state";
 import { mockDiamonds } from "@/lib/mock-diamonds";
 
@@ -31,6 +32,7 @@ export function DiamondSearchPage() {
 
   useEffect(() => {
     const nextParams = serializeFilterState(filterState);
+    setComparisonInParams(nextParams, parseComparisonIds(searchParams));
     const nextQuery = nextParams.toString();
     const currentQuery = searchParams.toString();
 
