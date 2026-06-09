@@ -1,6 +1,6 @@
-import { Diamond } from "@/lib/filter-types";
+import { ComparisonDiamond } from "@/lib/comparison-types";
 
-export const mockDiamonds: Diamond[] = [
+export const mockDiamonds: ComparisonDiamond[] = [
   {
     id: "147841971",
     lab: "Natural",
@@ -15,6 +15,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor A",
   },
   {
     id: "139342592",
@@ -30,6 +31,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor B",
   },
   {
     id: "168394205",
@@ -45,6 +47,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: false,
+    vendor: "Vendor C",
   },
   {
     id: "156982447",
@@ -60,6 +63,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor D",
   },
   {
     id: "132771904",
@@ -75,6 +79,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor A",
   },
   {
     id: "170284639",
@@ -90,6 +95,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GCAL",
     quickShip: true,
     deliveryByHoliday: false,
+    vendor: "Vendor B",
   },
   {
     id: "128849351",
@@ -105,6 +111,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor C",
   },
   {
     id: "144820652",
@@ -120,6 +127,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor D",
   },
   {
     id: "151009837",
@@ -135,6 +143,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: false,
+    vendor: "Vendor A",
   },
   {
     id: "160550284",
@@ -150,6 +159,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor B",
   },
   {
     id: "149233704",
@@ -165,6 +175,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor C",
   },
   {
     id: "171450992",
@@ -180,6 +191,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: false,
+    vendor: "Vendor D",
   },
   {
     id: "121784550",
@@ -195,6 +207,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GCAL",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor A",
   },
   {
     id: "163788214",
@@ -210,6 +223,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor B",
   },
   {
     id: "154902681",
@@ -225,6 +239,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: false,
+    vendor: "Vendor C",
   },
   {
     id: "166029755",
@@ -240,6 +255,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor D",
   },
   {
     id: "138540126",
@@ -255,6 +271,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor A",
   },
   {
     id: "177311608",
@@ -270,6 +287,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GIA",
     quickShip: false,
     deliveryByHoliday: false,
+    vendor: "Vendor B",
   },
   {
     id: "182440916",
@@ -285,6 +303,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor C",
   },
   {
     id: "188213405",
@@ -300,6 +319,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor D",
   },
   {
     id: "180945672",
@@ -315,6 +335,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GCAL",
     quickShip: false,
     deliveryByHoliday: false,
+    vendor: "Vendor A",
   },
   {
     id: "184739201",
@@ -330,6 +351,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: true,
+    vendor: "Vendor B",
   },
   {
     id: "189430778",
@@ -345,6 +367,7 @@ export const mockDiamonds: Diamond[] = [
     certification: "GCAL",
     quickShip: false,
     deliveryByHoliday: true,
+    vendor: "Vendor C",
   },
   {
     id: "181255693",
@@ -360,9 +383,10 @@ export const mockDiamonds: Diamond[] = [
     certification: "IGI",
     quickShip: true,
     deliveryByHoliday: false,
+    vendor: "Vendor D",
   },
 ];
 
-export function formatDiamondTitle(diamond: Diamond) {
+export function formatDiamondTitle(diamond: Pick<ComparisonDiamond, "carat" | "color" | "clarity" | "cut" | "shape">) {
   return `${diamond.carat.toFixed(2)}ct ${diamond.color} ${diamond.clarity} ${diamond.cut} Cut ${diamond.shape} Diamond`;
 }

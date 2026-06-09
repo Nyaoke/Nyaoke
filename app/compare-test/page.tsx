@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { ComparisonProvider, useComparison } from "@/lib/comparison-state";
 import { parseComparisonIds } from "@/lib/comparison-url";
+import { getComparisonHighlights, getHighlightedIds } from "@/lib/comparison-highlights";
 import { mockDiamonds } from "@/lib/mock-diamonds";
 
 function CompareTestPanel() {
@@ -14,6 +15,11 @@ function CompareTestPanel() {
     console.log("[compare-test] selectedIds", selectedIds);
     console.log("[compare-test] url compare param", parseComparisonIds(searchParams));
     console.log("[compare-test] full query", searchParams.toString());
+
+    const sample = mockDiamonds.slice(0, 3);
+    const highlights = getComparisonHighlights(sample);
+    console.log("[compare-test] highlights", highlights);
+    console.log("[compare-test] tied best price", getHighlightedIds(sample, "bestPrice", highlights));
   }, [searchParams, selectedIds]);
 
   return (
@@ -48,8 +54,10 @@ function CompareTestPanel() {
 
 export default function CompareTestPage() {
   return (
-    <ComparisonProvider>
-      <CompareTestPanel />
-    </ComparisonProvider>
+    <Suspense fallback={<div className="p-8">Loading comparison test...</div>}>
+      <ComparisonProvider>
+        <CompareTestPanel />
+      </ComparisonProvider>
+    </Suspense>
   );
 }
