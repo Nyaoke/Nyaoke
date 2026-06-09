@@ -5,7 +5,7 @@ import { Copy, X } from "lucide-react";
 import { toast } from "sonner";
 import { CompareBadge } from "@/components/compare-badge";
 import { CompareCell } from "@/components/compare-row";
-import { ShapeIllustration } from "@/components/shape-illustration";
+import { DiamondMedia } from "@/components/diamond-media";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
@@ -13,6 +13,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { formatCurrency } from "@/lib/filter-state";
 import { getComparisonHighlights, getHighlightedIds } from "@/lib/comparison-highlights";
 import { useComparison } from "@/lib/comparison-state";
+import { getDiamondImageUrl } from "@/lib/diamond-images";
 import { formatDiamondTitle, mockDiamonds } from "@/lib/mock-diamonds";
 
 const COLOR_TOOLTIP = "D-F colorless, G-J near-colorless, K faint yellow";
@@ -158,8 +159,14 @@ function renderCell(
   switch (label) {
     case "Image":
       return (
-        <div className="relative flex h-48 w-full items-center justify-center rounded-md border border-rc-border bg-neutral-100">
-          <ShapeIllustration shape={diamond.shape} />
+        <div className="relative h-48 w-full overflow-hidden rounded-md border border-rc-border">
+          <DiamondMedia
+            imageUrl={getDiamondImageUrl(diamond)}
+            shape={diamond.shape}
+            alt={formatDiamondTitle(diamond)}
+            className="h-full w-full"
+            sizes="256px"
+          />
           <button
             type="button"
             aria-label="Remove from comparison"

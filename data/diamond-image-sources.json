@@ -1,0 +1,22 @@
+{
+  "note": "Snapshot of Rare Carat product imagery captured for prototype placeholders. Source: media.rarecarat.com via diamond page JSON-LD.",
+  "shapes": {
+    "Round": [
+      { "file": "/diamonds/round-1.jpg", "sourceDiamondId": "147841971", "sourceUrl": "https://www.rarecarat.com/diamond/147841971" },
+      { "file": "/diamonds/round-2.jpg", "sourceDiamondId": "139342592", "sourceUrl": "https://www.rarecarat.com/diamond/139342592" },
+      { "file": "/diamonds/round-3.jpg", "sourceDiamondId": "150001675", "sourceUrl": "https://www.rarecarat.com/diamond/150001675" }
+    ],
+    "Oval": [{ "file": "/diamonds/oval-1.jpg", "sourceDiamondId": "149958121" }],
+    "Cushion": [{ "file": "/diamonds/cushion-1.jpg", "sourceDiamondId": "137565152" }],
+    "Emerald": [{ "file": "/diamonds/emerald-1.jpg", "sourceDiamondId": "144655433" }],
+    "Princess": [{ "file": "/diamonds/princess-1.jpg", "sourceDiamondId": "154139969" }],
+    "Radiant": [
+      { "file": "/diamonds/radiant-1.jpg", "sourceDiamondId": "144565604" },
+      { "file": "/diamonds/radiant-2.jpg", "sourceDiamondId": "151518145" }
+    ],
+    "Pear": [{ "file": "/diamonds/pear-1.jpg", "sourceDiamondId": "154844690" }],
+    "Marquise": [{ "file": "/diamonds/marquise-1.jpg", "sourceDiamondId": "149233704" }],
+    "Asscher": [{ "file": "/diamonds/asscher-1.jpg", "sourceDiamondId": "151212203", "note": "placeholder copy pending asscher CDN capture" }],
+    "Heart": [{ "file": "/diamonds/heart-1.jpg", "sourceDiamondId": "136053632" }]
+  }
+}

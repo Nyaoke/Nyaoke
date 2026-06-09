@@ -18,6 +18,7 @@ export type ComparisonAction =
 
 export type ComparisonDiamond = Diamond & {
   vendor: string;
+  imageUrl?: string;
 };
 
 export type ComparisonHighlights = {

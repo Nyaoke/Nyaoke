@@ -2,9 +2,10 @@
 
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ShapeIllustration } from "@/components/shape-illustration";
+import { DiamondMedia } from "@/components/diamond-media";
 import { useComparison } from "@/lib/comparison-state";
-import { mockDiamonds } from "@/lib/mock-diamonds";
+import { getDiamondImageUrl } from "@/lib/diamond-images";
+import { formatDiamondTitle, mockDiamonds } from "@/lib/mock-diamonds";
 import { cn } from "@/lib/utils";
 
 export function CompareDock() {
@@ -73,11 +74,18 @@ type DockThumbnailProps = {
 };
 
 function DockThumbnail({ diamondId, shape, onRemove }: DockThumbnailProps) {
+  const diamond = mockDiamonds.find((item) => item.id === diamondId);
+  const imageUrl = diamond ? getDiamondImageUrl(diamond) : null;
+
   return (
-    <div className="group relative h-10 w-10 rounded-md border border-rc-border bg-neutral-100">
-      <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-md">
-        <ShapeIllustration shape={shape} className="h-6 w-6 text-neutral-400" />
-      </div>
+    <div className="group relative h-10 w-10 overflow-hidden rounded-md border border-rc-border bg-neutral-100">
+      <DiamondMedia
+        imageUrl={imageUrl}
+        shape={shape}
+        alt={diamond ? formatDiamondTitle(diamond) : "Diamond"}
+        className="h-full w-full"
+        sizes="40px"
+      />
       <button
         type="button"
         aria-label="Remove from comparison"

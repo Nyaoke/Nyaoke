@@ -1,6 +1,8 @@
 import { CompareCheckbox } from "@/components/compare-checkbox";
+import { DiamondMedia } from "@/components/diamond-media";
 import { Diamond } from "@/lib/filter-types";
 import { formatCurrency } from "@/lib/filter-state";
+import { getDiamondImageUrl } from "@/lib/diamond-images";
 import { formatDiamondTitle } from "@/lib/mock-diamonds";
 
 type DiamondCardProps = {
@@ -8,9 +10,17 @@ type DiamondCardProps = {
 };
 
 export function DiamondCard({ diamond }: DiamondCardProps) {
+  const imageUrl = getDiamondImageUrl(diamond);
+
   return (
     <article className="relative border border-rc-border bg-white transition-colors duration-150 hover:border-neutral-300">
-      <div className="relative aspect-square border-b border-rc-border bg-neutral-100">
+      <div className="relative aspect-square border-b border-rc-border">
+        <DiamondMedia
+          imageUrl={imageUrl}
+          shape={diamond.shape}
+          alt={formatDiamondTitle(diamond)}
+          className="h-full w-full"
+        />
         <CompareCheckbox diamondId={diamond.id} />
       </div>
       <div className="space-y-2 p-4 pb-11">

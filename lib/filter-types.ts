@@ -58,6 +58,7 @@ export type Diamond = {
   certification: CertificationOption;
   quickShip: boolean;
   deliveryByHoliday: boolean;
+  imageUrl?: string;
 };
 
 export type ActiveFilterChip = {
