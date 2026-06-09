@@ -12,7 +12,7 @@ export function ResultsHeader() {
         <div>
           <p className="text-sm font-medium text-rc-text">50,671 results found</p>
           <p className="mt-2 max-w-2xl text-sm text-rc-muted">
-            We're using unbiased artificial intelligence to compare your diamonds to a million others{" "}
+            We&apos;re using unbiased artificial intelligence to compare your diamonds to a million others{" "}
             <a href="#" className="text-rc-text underline-offset-4 hover:underline">
               Track this search
             </a>

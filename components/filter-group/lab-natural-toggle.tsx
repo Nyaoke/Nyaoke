@@ -34,7 +34,7 @@ export function LabNaturalToggle({ value, onChange }: LabNaturalToggleProps) {
         })}
       </div>
       <a href="#" className="text-xs text-rc-muted underline-offset-4 hover:text-rc-text hover:underline">
-        What's the difference?
+        What&apos;s the difference?
       </a>
     </section>
   );
