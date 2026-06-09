@@ -8,6 +8,19 @@ type SearchParamsLike = {
 
 const validDiamondIds = new Set(mockDiamonds.map((diamond) => diamond.id));
 
+export function canonicalQueryString(params: URLSearchParams | string): string {
+  const normalized = typeof params === "string" ? new URLSearchParams(params) : params;
+  const sorted = [...normalized.entries()].sort(([left], [right]) => left.localeCompare(right));
+  return new URLSearchParams(sorted).toString();
+}
+
+export function queriesEquivalent(left: string, right: string): boolean {
+  if (left === right) {
+    return true;
+  }
+  return canonicalQueryString(left) === canonicalQueryString(right);
+}
+
 export function parseComparisonIds(params?: SearchParamsLike | null): string[] {
   if (!params) {
     return [];
@@ -48,7 +61,7 @@ export function setComparisonInParams(params: URLSearchParams, ids: string[]): v
 export function buildUrlWithComparison(pathname: string, currentParams: SearchParamsLike, ids: string[]): string {
   const params = new URLSearchParams(currentParams.toString());
   setComparisonInParams(params, ids);
-  const query = params.toString();
+  const query = canonicalQueryString(params);
   return query ? `${pathname}?${query}` : pathname;
 }
 

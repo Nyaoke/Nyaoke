@@ -18,15 +18,13 @@ export function CompareDock() {
   const mobileOverflow = selectedDiamonds.length - mobileVisible.length;
 
   return (
-    <>
-      <div className={cn("shrink-0", visible ? "h-14 md:h-16" : "h-0")} aria-hidden="true" />
-      <div
-        className={cn(
-          "fixed bottom-0 left-0 right-0 z-40 border-t border-rc-border bg-white shadow-[0_-1px_3px_rgba(0,0,0,0.06)] transition-transform duration-200",
-          visible ? "translate-y-0" : "translate-y-full pointer-events-none",
-        )}
-        aria-hidden={!visible}
-      >
+    <div
+      className={cn(
+        "fixed bottom-0 left-0 right-0 z-40 border-t border-rc-border bg-white shadow-[0_-1px_3px_rgba(0,0,0,0.06)] transition-transform duration-200 ease-out",
+        visible ? "translate-y-0" : "pointer-events-none translate-y-full",
+      )}
+      aria-hidden={!visible}
+    >
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-6 md:h-16">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 md:hidden">
@@ -65,7 +63,6 @@ export function CompareDock() {
         </Button>
       </div>
     </div>
-    </>
   );
 }
 

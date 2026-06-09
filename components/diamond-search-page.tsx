@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 import { ActiveFilterChipRow } from "@/components/active-filter-chip-row";
@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { applyFilters } from "@/lib/apply-filters";
 import { ActiveFilterChip } from "@/lib/filter-types";
-import { parseComparisonIds, setComparisonInParams } from "@/lib/comparison-url";
+import { canonicalQueryString, parseComparisonIds, queriesEquivalent, setComparisonInParams } from "@/lib/comparison-url";
 import { getActiveFilterChips, serializeFilterState, useFilterState } from "@/lib/filter-state";
 import { mockDiamonds } from "@/lib/mock-diamonds";
 
@@ -26,22 +26,25 @@ export function DiamondSearchPage() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [filterState, dispatch] = useFilterState(searchParams);
+  const searchParamsRef = useRef(searchParams);
+  searchParamsRef.current = searchParams;
 
   const activeChips = useMemo(() => getActiveFilterChips(filterState), [filterState]);
   const filteredDiamonds = useMemo(() => applyFilters(mockDiamonds, filterState), [filterState]);
 
   useEffect(() => {
+    const currentParams = searchParamsRef.current;
     const nextParams = serializeFilterState(filterState);
-    setComparisonInParams(nextParams, parseComparisonIds(searchParams));
-    const nextQuery = nextParams.toString();
-    const currentQuery = searchParams.toString();
+    setComparisonInParams(nextParams, parseComparisonIds(currentParams));
+    const nextQuery = canonicalQueryString(nextParams);
+    const currentQuery = canonicalQueryString(currentParams.toString());
 
-    if (nextQuery === currentQuery) {
+    if (queriesEquivalent(nextQuery, currentQuery)) {
       return;
     }
 
     router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, { scroll: false });
-  }, [filterState, pathname, router, searchParams]);
+  }, [filterState, pathname, router]);
 
   const removeChip = (chip: ActiveFilterChip) => {
     dispatch({ type: "removeChip", chip });

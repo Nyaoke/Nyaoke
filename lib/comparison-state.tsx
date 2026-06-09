@@ -12,13 +12,8 @@ import {
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
-import {
-  COMPARE_PARAM,
-  MAX_COMPARE_COUNT,
-  type ComparisonAction,
-  type ComparisonState,
-} from "@/lib/comparison-types";
-import { buildUrlWithComparison, parseComparisonIds } from "@/lib/comparison-url";
+import { MAX_COMPARE_COUNT, type ComparisonAction, type ComparisonState } from "@/lib/comparison-types";
+import { buildUrlWithComparison, comparisonIdsMatchUrl, parseComparisonIds } from "@/lib/comparison-url";
 
 const CAP_TOAST_MESSAGE = "Compare up to 4 diamonds. Remove one to add another.";
 
@@ -26,10 +21,6 @@ export const DEFAULT_COMPARISON_STATE: ComparisonState = {
   selectedIds: [],
   drawerOpen: false,
 };
-
-function idsEqual(a: string[], b: string[]) {
-  return a.length === b.length && a.every((id, index) => id === b[index]);
-}
 
 export function comparisonReducer(state: ComparisonState, action: ComparisonAction): ComparisonState {
   switch (action.type) {
@@ -68,7 +59,11 @@ export function ComparisonProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const isSyncingToUrl = useRef(false);
+  const searchParamsRef = useRef(searchParams);
+  const stateRef = useRef<ComparisonState>(DEFAULT_COMPARISON_STATE);
+  const pendingUrlIds = useRef<string | null>(null);
+
+  searchParamsRef.current = searchParams;
 
   const [state, dispatch] = useReducer(
     comparisonReducer,
@@ -79,29 +74,33 @@ export function ComparisonProvider({ children }: { children: ReactNode }) {
     }),
   );
 
+  stateRef.current = state;
+
   useEffect(() => {
-    if (isSyncingToUrl.current) {
-      isSyncingToUrl.current = false;
+    const urlIds = parseComparisonIds(searchParams);
+    const urlKey = urlIds.join(",");
+
+    if (pendingUrlIds.current !== null) {
+      if (pendingUrlIds.current === urlKey) {
+        pendingUrlIds.current = null;
+      }
       return;
     }
 
-    const compareInUrl = searchParams.get(COMPARE_PARAM);
-    const urlIds = parseComparisonIds(searchParams);
-
-    if (compareInUrl !== null && !idsEqual(state.selectedIds, urlIds)) {
+    if (!comparisonIdsMatchUrl(stateRef.current.selectedIds, searchParams)) {
       dispatch({ type: "hydrate", ids: urlIds });
     }
-  }, [searchParams, state.selectedIds]);
+  }, [searchParams]);
 
   useEffect(() => {
-    const urlIds = parseComparisonIds(searchParams);
-    if (idsEqual(state.selectedIds, urlIds)) {
+    const currentParams = searchParamsRef.current;
+    if (comparisonIdsMatchUrl(state.selectedIds, currentParams)) {
       return;
     }
 
-    isSyncingToUrl.current = true;
-    router.replace(buildUrlWithComparison(pathname, searchParams, state.selectedIds), { scroll: false });
-  }, [pathname, router, searchParams, state.selectedIds]);
+    pendingUrlIds.current = state.selectedIds.join(",");
+    router.replace(buildUrlWithComparison(pathname, currentParams, state.selectedIds), { scroll: false });
+  }, [pathname, router, state.selectedIds]);
 
   const toggleDiamond = useCallback(
     (id: string) => {

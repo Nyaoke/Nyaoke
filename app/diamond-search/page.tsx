@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Toaster } from "sonner";
 import { CompareDock } from "@/components/compare-dock";
 import { CompareDrawer } from "@/components/compare-drawer";
+import { ComparePageChrome } from "@/components/compare-page-chrome";
 import { MainNav } from "@/components/main-nav";
 import { PageHeading } from "@/components/page-heading";
 import { PromoStrip } from "@/components/promo-strip";
@@ -15,7 +16,9 @@ export default function Page() {
     <TooltipProvider delayDuration={150}>
       <Suspense fallback={<DiamondSearchFallback />}>
         <ComparisonProvider>
-          <DiamondSearchPage />
+          <ComparePageChrome>
+            <DiamondSearchPage />
+          </ComparePageChrome>
           <CompareDock />
           <CompareDrawer />
         </ComparisonProvider>
