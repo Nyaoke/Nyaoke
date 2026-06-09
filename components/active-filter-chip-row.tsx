@@ -36,13 +36,14 @@ export function ActiveFilterChipRow({ chips, onRemove, onReset }: ActiveFilterCh
 
   useEffect(() => {
     if (chips.length > 0) {
-      setShouldRender(true);
-      return;
+      const timeout = window.setTimeout(() => setShouldRender(true), 0);
+      return () => window.clearTimeout(timeout);
     }
 
-    setPopoverOpen(false);
-    setIsMeasured(false);
-    const timeout = window.setTimeout(() => setShouldRender(false), 150);
+    const timeout = window.setTimeout(() => {
+      setIsMeasured(false);
+      setShouldRender(false);
+    }, 150);
     return () => window.clearTimeout(timeout);
   }, [chips.length]);
 
@@ -114,12 +115,6 @@ export function ActiveFilterChipRow({ chips, onRemove, onReset }: ActiveFilterCh
   const visibleChips = useMemo(() => chips.slice(0, visibleCount), [chips, visibleCount]);
   const hiddenChips = useMemo(() => chips.slice(visibleCount), [chips, visibleCount]);
 
-  useEffect(() => {
-    if (hiddenChips.length === 0) {
-      setPopoverOpen(false);
-    }
-  }, [hiddenChips.length]);
-
   if (!shouldRender) {
     return null;
   }
@@ -164,7 +159,7 @@ export function ActiveFilterChipRow({ chips, onRemove, onReset }: ActiveFilterCh
 
           <OverflowPopover
             hiddenChips={hiddenChips}
-            open={popoverOpen}
+            open={popoverOpen && hiddenChips.length > 0 && hasActiveChips}
             onOpenChange={setPopoverOpen}
             onRemove={onRemove}
             onReset={onReset}
