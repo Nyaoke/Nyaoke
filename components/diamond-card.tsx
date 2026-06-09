@@ -1,3 +1,4 @@
+import { CompareCheckbox } from "@/components/compare-checkbox";
 import { Diamond } from "@/lib/filter-types";
 import { formatCurrency } from "@/lib/filter-state";
 import { formatDiamondTitle } from "@/lib/mock-diamonds";
@@ -9,7 +10,9 @@ type DiamondCardProps = {
 export function DiamondCard({ diamond }: DiamondCardProps) {
   return (
     <article className="relative border border-rc-border bg-white transition-colors duration-150 hover:border-neutral-300">
-      <div className="aspect-square border-b border-rc-border bg-neutral-100" />
+      <div className="relative aspect-square border-b border-rc-border bg-neutral-100">
+        <CompareCheckbox diamondId={diamond.id} />
+      </div>
       <div className="space-y-2 p-4 pb-11">
         <h2 className="text-sm font-medium leading-5 text-rc-text">{formatDiamondTitle(diamond)}</h2>
         <p className="text-xs text-rc-muted">
