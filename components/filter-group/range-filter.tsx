@@ -13,6 +13,7 @@ type RangeFilterProps = {
   value: RangeValue;
   minPlaceholder: string;
   maxPlaceholder: string;
+  helper?: string;
   quickPicks?: QuickPick[];
   prefix?: string;
   step?: string;
@@ -24,6 +25,7 @@ export function RangeFilter({
   value,
   minPlaceholder,
   maxPlaceholder,
+  helper,
   quickPicks = [],
   prefix,
   step = "0.01",
@@ -31,7 +33,10 @@ export function RangeFilter({
 }: RangeFilterProps) {
   return (
     <section className="space-y-3">
-      <h2 className="text-xs font-medium uppercase tracking-wide text-rc-muted">{label}</h2>
+      <div>
+        <h2 className="text-xs font-medium uppercase tracking-wide text-rc-muted">{label}</h2>
+        {helper ? <p className="mt-1 text-xs leading-5 text-rc-muted">{helper}</p> : null}
+      </div>
       <div className="grid grid-cols-2 gap-2">
         <NumberInput
           ariaLabel={`${label} minimum`}

@@ -14,6 +14,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "13/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "139342592",
@@ -28,6 +29,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "14/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "168394205",
@@ -42,6 +44,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "16/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: false,
   },
   {
     id: "156982447",
@@ -56,6 +59,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "15/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "132771904",
@@ -70,6 +74,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "15/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "170284639",
@@ -84,6 +89,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "14/18",
     certification: "GCAL",
     quickShip: true,
+    deliveryByHoliday: false,
   },
   {
     id: "128849351",
@@ -98,6 +104,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "17/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "144820652",
@@ -112,6 +119,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "16/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "151009837",
@@ -126,6 +134,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "14/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: false,
   },
   {
     id: "160550284",
@@ -140,6 +149,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "17/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "149233704",
@@ -154,6 +164,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "15/18",
     certification: "IGI",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "171450992",
@@ -168,6 +179,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "18/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: false,
   },
   {
     id: "121784550",
@@ -182,6 +194,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "15/18",
     certification: "GCAL",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "163788214",
@@ -196,6 +209,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "14/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "154902681",
@@ -210,6 +224,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "17/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: false,
   },
   {
     id: "166029755",
@@ -224,6 +239,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "18/18",
     certification: "GIA",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "138540126",
@@ -238,6 +254,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "16/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "177311608",
@@ -252,6 +269,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "18/18",
     certification: "GIA",
     quickShip: false,
+    deliveryByHoliday: false,
   },
   {
     id: "182440916",
@@ -266,6 +284,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "17/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "188213405",
@@ -280,6 +299,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "16/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "180945672",
@@ -294,6 +314,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "17/18",
     certification: "GCAL",
     quickShip: false,
+    deliveryByHoliday: false,
   },
   {
     id: "184739201",
@@ -308,6 +329,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "15/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: true,
   },
   {
     id: "189430778",
@@ -322,6 +344,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "14/18",
     certification: "GCAL",
     quickShip: false,
+    deliveryByHoliday: true,
   },
   {
     id: "181255693",
@@ -336,6 +359,7 @@ export const mockDiamonds: Diamond[] = [
     quality: "16/18",
     certification: "IGI",
     quickShip: true,
+    deliveryByHoliday: false,
   },
 ];
 

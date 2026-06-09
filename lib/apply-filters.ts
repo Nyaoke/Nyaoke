@@ -46,6 +46,10 @@ export function applyFilters(diamonds: Diamond[], filters: FilterState) {
       return false;
     }
 
+    if (filters.deliveryByHoliday && !diamond.deliveryByHoliday) {
+      return false;
+    }
+
     return true;
   });
 }
