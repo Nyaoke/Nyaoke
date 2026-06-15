@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu } from "lucide-react";
 import { nav, contact } from "@/content/site";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,13 +11,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useTheme } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -59,7 +58,7 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <div className="flex items-center gap-2 text-caption text-ink-tertiary">
             <span
               className="h-1.5 w-1.5 rounded-full bg-accent"
@@ -67,6 +66,7 @@ export function Nav() {
             />
             <span>Available for select roles, 2026</span>
           </div>
+          <ThemeToggle />
           <Button variant="outline" size="pill" asChild>
             <Link href={contact.cal} target="_blank" rel="noopener noreferrer">
               Contact
@@ -74,7 +74,9 @@ export function Nav() {
           </Button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
             <button
               type="button"
@@ -107,7 +109,7 @@ export function Nav() {
                 Contact
               </Link>
             </div>
-            <div className="mt-auto flex items-center justify-between border-t border-default pt-6">
+            <div className="mt-auto border-t border-default pt-6">
               <div className="flex items-center gap-2 text-caption text-ink-tertiary">
                 <span
                   className="h-1.5 w-1.5 rounded-full bg-accent"
@@ -115,17 +117,10 @@ export function Nav() {
                 />
                 <span>Available for select roles, 2026</span>
               </div>
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="flex h-10 w-10 items-center justify-center rounded-input border border-default text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
-                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              >
-                {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
-              </button>
             </div>
           </SheetContent>
         </Sheet>
+        </div>
       </nav>
     </header>
   );
