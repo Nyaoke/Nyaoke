@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #f8f7f4;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #f1efea;
+  --ink-primary: #0e0e0c;
+  --ink-secondary: #3d3d38;
+  --ink-tertiary: #6e6e68;
+  --ink-quaternary: #a8a8a0;
+  --border-default: #e5e2da;
+  --border-strong: #c9c5b8;
+  --accent: #2f4f36;
+  --accent-soft: #e8efe8;
+  --signal-warning: #b8742c;
+}
+
+.dark {
+  --bg-canvas: #0e0e0c;
+  --bg-elevated: #18181a;
+  --bg-subtle: #1f1f22;
+  --ink-primary: #f4f2ec;
+  --ink-secondary: #c9c5b8;
+  --ink-tertiary: #8e8a7e;
+  --ink-quaternary: #5c5a52;
+  --border-default: #2a2a2e;
+  --border-strong: #3d3d40;
+  --accent: #8fb394;
+  --accent-soft: #1f2a22;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-canvas font-sans text-body text-ink-primary antialiased;
+  }
+
+  h1,
+  h2 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-ink-primary;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply outline outline-2 outline-offset-4 outline-ink-primary;
+  }
+
+  .container-content {
+    @apply mx-auto w-full max-w-content px-gutter md:px-gutter-md lg:px-gutter-lg;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-content-wide px-gutter md:px-gutter-md lg:px-gutter-lg;
+  }
+
+  .section-padding {
+    @apply py-section lg:py-section-lg;
+  }
+
+  .mono-eyebrow {
+    @apply font-mono text-mono-label uppercase text-ink-tertiary;
+  }
+
+  .prose-editorial {
+    @apply text-body-lg leading-[1.7] text-ink-secondary;
+  }
+
+  .prose-editorial h2 {
+    @apply mb-4 mt-12 font-display text-h3 italic text-ink-primary first:mt-0;
+  }
+
+  .prose-editorial p {
+    @apply mb-6;
+  }
+
+  .prose-editorial p:last-child {
+    @apply mb-0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
