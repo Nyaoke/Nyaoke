@@ -73,6 +73,7 @@ export function Lightbox({
             width={1920}
             height={1080}
             className="w-full rounded-card object-contain"
+            unoptimized
             onError={() => setImgSrc(PLACEHOLDER)}
           />
           {screens.length > 1 && (

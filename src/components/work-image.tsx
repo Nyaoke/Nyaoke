@@ -36,6 +36,7 @@ export function WorkImage({
       className={className}
       priority={priority}
       sizes={sizes}
+      unoptimized
       onError={() => setImgSrc(PLACEHOLDER)}
     />
   );
