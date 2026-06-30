@@ -2,16 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
-import { nav, contact } from "@/content/site";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { Menu, X } from "lucide-react";
+import { nav } from "@/content/site";
+import { contact } from "@/content/site";
+import { wordmark } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
@@ -19,7 +13,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 64);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -28,21 +22,18 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 h-16 transition-colors duration-hover",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled
-          ? "border-b border-default bg-canvas/90 backdrop-blur-md"
-          : "bg-transparent"
+          ? "border-b border-border bg-page/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       )}
     >
       <nav
-        className="container-content flex h-full items-center justify-between"
-        aria-label="Main navigation"
+        className="container-page flex h-16 items-center justify-between"
+        aria-label="Main"
       >
-        <Link
-          href="/"
-          className="font-display text-body-lg text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
-        >
-          Ted Nyaoke
+        <Link href="/" className="text-[17px] font-semibold tracking-tight text-ink">
+          {wordmark}
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -50,7 +41,7 @@ export function Nav() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="text-body-sm text-ink-secondary transition-colors duration-hover hover:text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
+                className="text-[15px] font-medium text-ink-muted transition-colors hover:text-ink"
               >
                 {item.label}
               </Link>
@@ -58,70 +49,64 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <div className="flex items-center gap-2 text-caption text-ink-tertiary">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-accent"
-              aria-hidden="true"
-            />
-            <span>Available for select roles, 2026</span>
-          </div>
-          <ThemeToggle />
-          <Button variant="outline" size="pill" asChild>
-            <Link href={contact.cal} target="_blank" rel="noopener noreferrer">
-              Contact
-            </Link>
-          </Button>
+        <div className="hidden md:block">
+          <Link href={contact.cal} target="_blank" rel="noopener noreferrer" className="btn-primary h-10 px-5">
+            Contact
+          </Link>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild className="md:hidden">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          aria-label="Open menu"
+        >
+          <Menu size={20} />
+        </button>
+      </nav>
+
+      {open && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-page md:hidden">
+          <div className="container-page flex h-16 items-center justify-between">
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className="text-[17px] font-semibold tracking-tight text-ink"
+            >
+              {wordmark}
+            </Link>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
-              aria-label="Open menu"
+              onClick={() => setOpen(false)}
+              className="flex h-10 w-10 items-center justify-center text-ink"
+              aria-label="Close menu"
             >
-              <Menu size={20} />
+              <X size={22} />
             </button>
-          </SheetTrigger>
-          <SheetContent side="right" className="flex flex-col">
-            <SheetTitle className="sr-only">Navigation menu</SheetTitle>
-            <div className="mt-16 flex flex-col gap-6">
-              {nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="font-display text-h2 text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
-                >
-                  {item.label}
-                </Link>
-              ))}
+          </div>
+          <div className="container-page flex flex-1 flex-col justify-center gap-6">
+            {nav.map((item) => (
               <Link
-                href={contact.cal}
-                target="_blank"
-                rel="noopener noreferrer"
+                key={item.href}
+                href={item.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-h2 text-ink-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-primary"
+                className="text-4xl font-semibold tracking-tight text-ink"
               >
-                Contact
+                {item.label}
               </Link>
-            </div>
-            <div className="mt-auto border-t border-default pt-6">
-              <div className="flex items-center gap-2 text-caption text-ink-tertiary">
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-accent"
-                  aria-hidden="true"
-                />
-                <span>Available for select roles, 2026</span>
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+            ))}
+            <Link
+              href={contact.cal}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-4 w-fit"
+            >
+              Contact
+            </Link>
+          </div>
         </div>
-      </nav>
+      )}
     </header>
   );
 }

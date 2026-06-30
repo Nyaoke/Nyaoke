@@ -1,259 +1,113 @@
-export type ProjectCategory = "Product" | "Web" | "Independent" | "Mobile";
-
-export type HomeLayout = "full" | "left" | "right";
-
-export type ScreenSpan = 6 | 8 | 12;
-
-export interface ProjectScreen {
-  src: string;
-  caption?: string;
-  span: ScreenSpan;
-}
-
-export interface ProjectOutcome {
-  metric: string;
-  label: string;
+export interface ProjectSection {
+  heading?: string;
+  body: string;
 }
 
 export interface Project {
   slug: string;
   name: string;
-  tagline: string;
-  category: ProjectCategory;
-  year: number;
+  subtitle: string;
   featured: boolean;
-  homeLayout: HomeLayout;
-  role: string;
-  team: string;
-  timeline: string;
-  stack: string[];
-  cover: string;
-  hero: string;
-  context: string[];
-  approach: string[];
-  screens: ProjectScreen[];
-  outcomes: ProjectOutcome[];
-  outcomesNarrative: string;
-  reflection: string;
+  client?: string;
+  year?: string;
+  scope?: string;
+  heroHeading?: string;
+  intro?: string;
+  sections?: ProjectSection[];
 }
-
-const placeholderContext = ["Replace with case study content."];
-const placeholderApproach = ["Replace with case study content."];
-const placeholderOutcomes: ProjectOutcome[] = [
-  { metric: "X", label: "Replace with outcome metric" },
-];
-const placeholderNarrative = "Replace with case study content.";
-const placeholderReflection = "Replace with case study content.";
 
 export const projects: Project[] = [
   {
-    slug: "kijani-flow",
-    name: "Kijani Flow",
-    tagline:
-      "A carbon credits exchange for African voluntary and compliance markets.",
-    category: "Independent",
-    year: 2025,
+    slug: "ola-energy",
+    name: "Ola Energy",
+    subtitle: "Corporate Site & Products Showcase",
     featured: true,
-    homeLayout: "full",
-    role: "Founder, designer, engineer",
-    team: "Solo build",
-    timeline: "4 months",
-    stack: ["React", "Supabase", "TypeScript", "Tailwind", "i18next"],
-    cover: "/work/kijani-flow/cover.png",
-    hero: "/work/kijani-flow/hero.png",
-    context: [
-      "African carbon markets are growing rapidly but the infrastructure to trade credits transparently is fragmented.",
-      "Kijani Flow is a real-time exchange for voluntary and compliance credits, designed around the operational realities of project developers, retiring corporates, and regulators.",
+    client: "Ola Energy",
+    year: "2026",
+    scope: "Web Design, Prototyping, UX strategy",
+    heroHeading: "Fueling Africa",
+    intro:
+      "OLA Energy is a major pan-African downstream oil and gas company that operates an extensive network of service stations across 17 African countries. Formerly known as OiLibya, the company rebranded to OLA Energy in 2018 to reflect a modern image focused on providing diverse energy solutions and superior customer service, with a goal to keep you going.",
+    sections: [
+      {
+        heading: "Energizing Africa",
+        body: "A corporate digital transformation project aimed at modernizing OLA Energy's pan-African presence. The website serves as a high-performance hub for B2C and B2B stakeholders across 17 countries. Key features include an interactive station locator, a B2B portal for lubricants and LPG distribution, and a sustainability dashboard. The design language utilizes bold gradients and a mobile-first architecture to cater to the diverse infrastructure of the African continent.",
+      },
+      {
+        heading: "Rooted in Africa, Driven by Excellence",
+        body: "At OLA Energy, we provide more than just a stop along the way; we offer a comprehensive suite of energy solutions designed to power every aspect of African life. Our core is built on high-performance fuels engineered to maximize engine efficiency, complemented by our blending plants that produce premium lubricants and maintain our strategic partnership with Mobil. We understand that the modern motorist requires more than just a refill, which is why our marhaba convenience stores have evolved into community hubs where travelers can refresh and recharge with quality snacks and essential services.",
+      },
+      {
+        heading: "Redefining the Journey: Our Products & Services",
+        body: "Beyond the forecourt, we are committed to empowering both businesses and households through innovation and accessibility. Our digital O'Card system offers a seamless, secure way for fleet managers and individuals to track energy consumption in real-time, bridging the gap between traditional fuel and modern fintech. Simultaneously, we are bringing cleaner energy to the heart of the home through our expansive Liquefied Petroleum Gas (LPG) network, ensuring that safe and affordable cooking solutions are available to families across the continent. From the industrial sector to the daily commute, OLA Energy is the silent partner in Africa's relentless momentum.",
+      },
     ],
-    approach: [
-      "Four role-based dashboards, real-time order matching, an immutable retirement ledger, AI-assisted data ingestion, eight-language i18n with right-to-left support, multi-currency settlement.",
-    ],
-    screens: [
-      { src: "/work/kijani-flow/screen-1.png", span: 12 },
-      { src: "/work/kijani-flow/screen-2.png", span: 8 },
-      { src: "/work/kijani-flow/screen-3.png", span: 6 },
-    ],
-    outcomes: [
-      { metric: "8", label: "Languages supported with RTL" },
-      { metric: "4", label: "Role-based dashboards" },
-      { metric: "$150K+", label: "Estimated platform market value" },
-    ],
-    outcomesNarrative:
-      "Built end-to-end in four months. Estimated build value of $50K to $90K, market value $150K to $350K+ based on comparable carbon registry platforms.",
-    reflection:
-      "I would have started with the retirement ledger schema rather than the order book. The ledger is the trust artifact, everything else is interface.",
+  },
+  {
+    slug: "walker-town",
+    name: "Walker Town",
+    subtitle: "Landing Page Design",
+    featured: true,
+  },
+  {
+    slug: "pulse-sentiment",
+    name: "Pulse Sentiment",
+    subtitle: "AI-native sentiment intelligence platform",
+    featured: true,
+  },
+  {
+    slug: "stanbic-bank---ssd",
+    name: "Stanbic Bank - SSD",
+    subtitle: "Website Design for the South Sudan Market",
+    featured: true,
+  },
+  {
+    slug: "dunkit",
+    name: "DunkIt",
+    subtitle: "Mobile App",
+    featured: false,
   },
   {
     slug: "mediacommand",
     name: "MediaCommand",
-    tagline:
-      "A 20-module cross-channel media operating system for the African ad market.",
-    category: "Independent",
-    year: 2025,
-    featured: true,
-    homeLayout: "left",
-    role: "Founder, product, design",
-    team: "Solo with Claude and Codex",
-    timeline: "Ongoing",
-    stack: ["Next.js", "TypeScript", "Claude", "Codex"],
-    cover: "/work/mediacommand/cover.png",
-    hero: "/work/mediacommand/hero.png",
-    context: [
-      "Media agencies in Africa run on spreadsheets and screenshots.",
-      "MediaCommand replaces twenty point-tools with one operating system covering planning, buying, monitoring, post-campaign analysis, and client reporting.",
-    ],
-    approach: [
-      "Twenty modules, each replacing a workflow that currently lives in Excel or PowerPoint, built as an agentic tool that drafts plans, validates against client briefs, and produces presentation-ready outputs.",
-    ],
-    screens: [
-      { src: "/work/mediacommand/screen-1.png", span: 12 },
-      { src: "/work/mediacommand/screen-2.png", span: 6 },
-      { src: "/work/mediacommand/screen-3.png", span: 6 },
-    ],
-    outcomes: [
-      { metric: "20", label: "Modules covering the agency workflow" },
-      { metric: "GITEX", label: "Demoed at GITEX Kenya 2025" },
-    ],
-    outcomesNarrative:
-      "Currently in pilot with select Ogilvy Africa teams.",
-    reflection:
-      "Twenty modules is too many for v1. I am collapsing the next iteration into the six that earn the most time back per week.",
+    subtitle: "Cross-channel media operating system",
+    featured: false,
   },
   {
-    slug: "pulse",
-    name: "Pulse",
-    tagline: "Political sentiment intelligence for Kenya's 47 counties.",
-    category: "Independent",
-    year: 2025,
-    featured: true,
-    homeLayout: "right",
-    role: "Founder, designer, engineer",
-    team: "Solo",
-    timeline: "Ongoing",
-    stack: ["Next.js", "Claude", "NLP"],
-    cover: "/work/pulse/cover.png",
-    hero: "/work/pulse/hero.png",
-    context: [
-      "Political polling in Kenya is expensive, slow, and methodologically limited.",
-      "Pulse uses Claude-powered NLP to read social signals in code-switched Kenyan English and Swahili, surfacing sentiment trends per county in near-real-time.",
-    ],
-    approach: [
-      "Tuned the NLP layer to handle Sheng and code-switching, built a competitor benchmarking module and a campaign strategy workspace on top of the raw signal.",
-    ],
-    screens: [
-      { src: "/work/pulse/screen-1.png", span: 8 },
-      { src: "/work/pulse/screen-2.png", span: 6 },
-      { src: "/work/pulse/screen-3.png", span: 12 },
-    ],
-    outcomes: [
-      { metric: "47", label: "Counties tracked" },
-      { metric: "2", label: "Languages with code-switching support" },
-    ],
-    outcomesNarrative: "In early pilot.",
-    reflection: "Replace with reflection as the product matures.",
+    slug: "airtel-money",
+    name: "Airtel Money",
+    subtitle: "Corporate Website",
+    featured: false,
   },
   {
-    slug: "agile-hub",
-    name: "Agile Hub",
-    tagline:
-      "B2B SaaS workforce platform for East Africa's hospitality sector.",
-    category: "Independent",
-    year: 2025,
-    featured: true,
-    homeLayout: "left",
-    role: "Founder, product, design, engineering",
-    team: "Solo",
-    timeline: "6 months",
-    stack: ["Next.js", "TypeScript", "Supabase"],
-    cover: "/work/agile-hub/cover.png",
-    hero: "/work/agile-hub/hero.png",
-    context: [
-      "East Africa's hospitality industry runs on informal staffing networks.",
-      "Agile Hub formalizes the layer between hotels, restaurants, and the workforce that powers them.",
-    ],
-    approach: [
-      "Two-sided marketplace with verified credentialing, shift scheduling, payment rails, and a reputation system that follows workers across employers.",
-    ],
-    screens: [
-      { src: "/work/agile-hub/screen-1.png", span: 12 },
-      { src: "/work/agile-hub/screen-2.png", span: 6 },
-      { src: "/work/agile-hub/screen-3.png", span: 6 },
-    ],
-    outcomes: [
-      { metric: "1st", label: "East Africa Future Leaders Challenge 2025" },
-      { metric: "RCT", label: "Rwanda Chamber of Tourism endorsement" },
-    ],
-    outcomesNarrative:
-      "Won first place at the East Africa Future Leaders Challenge 2025 and earned endorsement from the Rwanda Chamber of Tourism.",
-    reflection:
-      "The credentialing layer needs to be simpler. I am restructuring it around a single trust score.",
+    slug: "honda-kenya",
+    name: "Honda Kenya",
+    subtitle: "Information Website",
+    featured: false,
   },
   {
-    slug: "stanbic-bank-south-sudan",
-    name: "Stanbic Bank, South Sudan",
-    tagline:
-      "Website redesign for a frontier market banking operation.",
-    category: "Web",
-    year: 2024,
-    featured: true,
-    homeLayout: "right",
-    role: "Lead Product Designer",
-    team: "Ogilvy Africa",
-    timeline: "10 weeks",
-    stack: ["Figma", "WordPress"],
-    cover: "/work/stanbic-bank-south-sudan/cover.png",
-    hero: "/work/stanbic-bank-south-sudan/hero.png",
-    context: placeholderContext,
-    approach: placeholderApproach,
-    screens: [
-      { src: "/work/stanbic-bank-south-sudan/screen-1.png", span: 12 },
-    ],
-    outcomes: placeholderOutcomes,
-    outcomesNarrative: placeholderNarrative,
-    reflection: placeholderReflection,
+    slug: "neongage",
+    name: "Neongage",
+    subtitle: "iGaming CRM platform built for emerging markets.",
+    featured: false,
   },
   {
-    slug: "ola-energy",
-    name: "Ola Energy",
-    tagline:
-      "Corporate site and product showcase for a pan-African energy company.",
-    category: "Web",
-    year: 2024,
-    featured: true,
-    homeLayout: "left",
-    role: "Product Designer",
-    team: "Ogilvy Africa",
-    timeline: "8 weeks",
-    stack: ["Figma", "WordPress"],
-    cover: "/work/ola-energy/cover.png",
-    hero: "/work/ola-energy/hero.png",
-    context: placeholderContext,
-    approach: placeholderApproach,
-    screens: [{ src: "/work/ola-energy/screen-1.png", span: 12 }],
-    outcomes: placeholderOutcomes,
-    outcomesNarrative: placeholderNarrative,
-    reflection: placeholderReflection,
+    slug: "crown-paints",
+    name: "Crown Paints",
+    subtitle: "Corporate Website",
+    featured: false,
   },
   {
-    slug: "dunkit-nba-africa",
-    name: "DunkIt, NBA Africa",
-    tagline: "Mobile app design for NBA Africa's fan engagement product.",
-    category: "Mobile",
-    year: 2023,
-    featured: true,
-    homeLayout: "right",
-    role: "Product Designer",
-    team: "Ogilvy Africa",
-    timeline: "12 weeks",
-    stack: ["Figma", "React Native"],
-    cover: "/work/dunkit-nba-africa/cover.png",
-    hero: "/work/dunkit-nba-africa/hero.png",
-    context: placeholderContext,
-    approach: placeholderApproach,
-    screens: [{ src: "/work/dunkit-nba-africa/screen-1.png", span: 12 }],
-    outcomes: placeholderOutcomes,
-    outcomesNarrative: placeholderNarrative,
-    reflection: placeholderReflection,
+    slug: "purpose-to-impact",
+    name: "Purpose to Impact",
+    subtitle: "Website Design / Development",
+    featured: false,
+  },
+  {
+    slug: "kijani-flow",
+    name: "Kijani Flow",
+    subtitle: "Carbon credits exchange built for Africa.",
+    featured: false,
   },
 ];
 
@@ -263,22 +117,7 @@ export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
 
-export function getNextProject(slug: string): Project | undefined {
-  const sorted = [...projects].sort((a, b) => b.year - a.year);
-  const index = sorted.findIndex((p) => p.slug === slug);
-  if (index === -1 || index === sorted.length - 1) return sorted[0];
-  return sorted[index + 1];
+export function getNextProject(slug: string): Project {
+  const index = projects.findIndex((p) => p.slug === slug);
+  return projects[(index + 1) % projects.length];
 }
-
-export const independentProjects = projects.filter(
-  (p) => p.category === "Independent"
-);
-
-export const clientLogos = [
-  "Ogilvy Africa",
-  "Stanbic Bank",
-  "Ola Energy",
-  "NBA Africa",
-  "Yellow Pages",
-  "Rwanda Chamber of Tourism",
-];

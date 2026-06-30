@@ -1,25 +1,29 @@
-import { HeroSection } from "@/components/sections/hero-section";
-import { SelectedWorkSection } from "@/components/sections/selected-work-section";
-import { IndependentProductsSection } from "@/components/sections/independent-products-section";
-import { MetricsSection } from "@/components/sections/metrics-section";
-import { CapabilitiesSection } from "@/components/sections/capabilities-section";
-import { AboutPreviewSection } from "@/components/sections/about-preview-section";
-import { ClientLogosSection } from "@/components/sections/client-logos-section";
-import { WritingSection } from "@/components/sections/writing-section";
-import { ContactSection } from "@/components/sections/contact-section";
+import { Hero } from "@/components/sections/hero";
+import { LatestProjects } from "@/components/sections/latest-projects";
+import { FeaturedTestimonial } from "@/components/sections/featured-testimonial";
+import { Services } from "@/components/sections/services";
+import { About } from "@/components/sections/about";
+import { MediaCommand } from "@/components/sections/media-command";
+import { Pricing } from "@/components/sections/pricing";
+import { Testimonials } from "@/components/sections/testimonials";
+import { Faq } from "@/components/sections/faq";
+import { DiscoveryCta } from "@/components/sections/discovery-cta";
+import { BlogPreview } from "@/components/sections/blog-preview";
 
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
-      <SelectedWorkSection />
-      <IndependentProductsSection />
-      <MetricsSection />
-      <CapabilitiesSection />
-      <AboutPreviewSection />
-      <ClientLogosSection />
-      <WritingSection />
-      <ContactSection />
+      <Hero />
+      <LatestProjects />
+      <FeaturedTestimonial />
+      <Services />
+      <About />
+      <MediaCommand />
+      <Pricing />
+      <Testimonials />
+      <Faq />
+      <DiscoveryCta />
+      <BlogPreview />
     </>
   );
 }
